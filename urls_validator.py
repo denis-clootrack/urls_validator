@@ -14,11 +14,13 @@ st.set_page_config(
     layout="wide"
 )
 
-# Define regex patterns for each source
 valid_url_patterns = {
     "walmart_review_crawlerAPI": [
-        r"https:\/\/www\.walmart\.[a-z\.]+\/reviews\/product\/\d+",
-        r"https:\/\/www\.walmart\.[a-z\.]+\/ip\/.+\/\d+",
+        r"https:\/\/www\.walmart\.[a-z\.]+\/reviews\/product\/\d+\?page=\d+$",
+        r"http:\/\/www\.walmart\.[a-z\.]+\/reviews\/product\/\d+\?page=\d+$",
+        r"https:\/.walmart\.[a-z\.]+\/reviews\/product\/\d+\?page=\d+$",
+        r"https:\/\/www\.walmart\.[a-z\.]+\/reviews\/product\/\d+$",
+        r"https:\/\/www\.walmart\.[a-z\.]+\/reviews\/product\/\d+\?page=\d+&page=\d+",
         r"https:\/\/www\.walmart\.[a-z\.]+\/reviews\/product\/\d+\?page=\d+-\d+"
     ],
     "walmart_product_link_crawlerAPI": [
@@ -31,7 +33,17 @@ valid_url_patterns = {
     ],
     "amazon_review_crawlerAPI": [
         r"https:\/\/www\.amazon\.[a-z\.]+\/product-reviews\/.+\/ref=cm_cr_arp_d_viewopt_srt\?ie=UTF8&reviewerType=all_reviews&sortBy=.+",
-        r"https:\/\/www\.amazon\.[a-z\.]+\/.+\/product-reviews\/.+\/ref=cm_cr_arp_d_viewopt_srt\?ie=UTF8&reviewerType=all_reviews&sortBy=.+"
+        r"https:\/\/www\.amazon\.[a-z\.]+\/.+\/product-reviews\/.+\/ref=cm_cr_arp_d_viewopt_srt\?ie=UTF8&reviewerType=all_reviews&sortBy=.+",
+        r"https:\/\/www\.amazon\.[a-z\.]+\/.+\/product-reviews\/.+\/ref=cm_cr_dp_d_show_all_btm\?ie=UTF8&reviewerType=all_reviews&sortBy=.+",
+        r"https:\/\/www\.amazon\.[a-z\.]+\/.+\/product-reviews\/.+\/ref=cm_cr_dp_d_show_all_btm\?ie=UTF8&reviewerType=all_reviews",
+        r"https:\/\/www\.amazon\.[a-z\.]+\/.+\/product-reviews\/.+\?ie=UTF8&reviewerType=all_reviews&sortBy=.+",
+        r"https:\/\/www\.amazon\.[a-z\.]+\/.+\/product-reviews\/.+\/ref=cm_cr_dp_d_show_all_btm",
+        r"https:\/\/www\.amazon\.[a-z\.]+\/.+\/product-reviews\/.+\?ie=UTF8&reviewerType=all_reviews",
+        r"https:\/\/www\.amazon\.[a-z\.]+\/product-reviews\/[^\/]+\/ref=[^?]+\?ie=UTF8&reviewerType=all_reviews(&sortBy=[^&]+)?",
+        r"https:\/\/www\.amazon\.[a-z\.]+\/product-reviews\/[^\/]+\?ie=UTF8&reviewerType=all_reviews(&sortBy=[^&]+)?",
+        r"https:\/\/www\.amazon\.[a-z\.]+\/.+\/product-reviews\/[^\/]+\?sortBy=.+",
+        r"https:\/\/www\.amazon\.[a-z\.]+\/product-reviews\/[^\/]+\?ref=[^&]+&reviewerType=all_reviews(&filterByStar=[^&]+)?(&sortBy=[^&]+)?",
+        r"https:\/\/www\.amazon\.[a-z\.]+\/product-reviews\/[^\/]+\?reviewerType=all_reviews(&filterByStar=[^&]+)?(&sortBy=[^&]+)?"
     ]
 }
 
